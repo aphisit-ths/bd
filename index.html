@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday บุษบา</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Itim&family=Mitr:wght@300;400&family=Maledpan&family=Kodchasan:wght@400;600&family=Athiti:wght@400;600&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Maledpan', 'Mitr', sans-serif;
+      background-color: #fff6f9;
+      color: #333;
+      overflow-x: hidden;
+      font-weight: 300;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      z-index: 1; /* ให้ section มี z-index เท่ากันทั้งหมด */
+    }
+
+    h1 {
+      font-family: 'Kodchasan', cursive;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease;
+      color: #ff5e78;
+      text-shadow: 1px 1px 0px rgba(255,255,255,0.8);
+      font-weight: 600;
+    }
+
+    p {
+      font-family: 'Athiti', sans-serif;
+      font-size: 1.3rem;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease 0.3s;
+      font-weight: 400;
+    }
+
+    .visible h1, .visible p {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 1.5rem;
+      animation: floatHeart 10s linear infinite;
+      opacity: 0.8;
+      color: #ff6b6b;
+    }
+
+    @keyframes floatHeart {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .bg-1 { background: linear-gradient(to bottom, #fff6f9, #ffe6f2); }
+    .bg-2 { background: linear-gradient(to bottom, #ffe6f2, #ffd1e8); }
+    .bg-3 { background: linear-gradient(to bottom, #ffd1e8, #ffbcdd); }
+    .bg-4 { background: linear-gradient(to bottom, #ffbcdd, #ffa8d3); }
+    .bg-5 { background: linear-gradient(to bottom, #ffa8d3, #ff94c9); }
+    .bg-6 { background: radial-gradient(circle, #ff94c9, #ff5e78); }
+
+    .music-control {
+      position: fixed;
+      bottom: 15px;
+      right: 15px;
+      z-index: 100;
+      background: rgba(255, 187, 215, 0.8);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 3px 8px rgba(255, 105, 180, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .music-icon {
+      font-size: 24px;
+    }
+
+    .photo-frame {
+      width: 280px;
+      height: 280px;
+      border-radius: 20px;
+      border: 8px solid white;
+      box-shadow: 0 6px 20px rgba(255, 105, 180, 0.25);
+      margin: 1.5rem 0;
+      overflow: hidden;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all 1s ease 0.6s;
+    }
+
+    .visible .photo-frame {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .photo-placeholder {
+      width: 100%;
+      height: 100%;
+      background-color: #ffebf5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #ff73b9;
+      font-size: 0.9rem;
+      font-family: 'Athiti', sans-serif;
+    }
+
+    .final-section {
+      background: radial-gradient(circle, #ff94c9, #ff5e78);
+    }
+
+    .final-title {
+      font-size: 2.8rem;
+      color: white;
+      text-shadow: 2px 2px 0px rgba(255, 105, 180, 0.4);
+      margin-bottom: 1.5rem;
+    }
+
+    .cake {
+      font-size: 5rem;
+      margin: 1.5rem 0;
+      animation: bounce 2s infinite;
+      opacity: 0;
+      transition: opacity 1s ease 0.9s;
+      text-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .visible .cake {
+      opacity: 1;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    .instructions {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      background: rgba(255, 187, 215, 0.9);
+      padding: 8px 15px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      box-shadow: 0 3px 8px rgba(255, 105, 180, 0.3);
+      color: #ff2966;
+      font-family: 'Maledpan', sans-serif;
+      z-index: 50;
+    }
+
+    /* เพิ่มสติกเกอร์น่ารักๆ */
+    .sticker {
+      position: absolute;
+      font-size: 1.8rem;
+      opacity: 0.7;
+      animation: float 7s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-15px) rotate(5deg);
+      }
+    }
+
+    /* สไตล์สำหรับแจ้งเตือนเปิดเสียง */
+    .sound-notice {
+      padding: 12px 20px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 15px;
+      border: 2px solid #ff73b9;
+      margin-top: 20px;
+      font-family: 'Maledpan', sans-serif;
+      font-size: 1rem;
+      color: #ff2966;
+      text-align: center;
+      animation: pulse 2s infinite;
+      box-shadow: 0 4px 10px rgba(255, 105, 180, 0.25);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease 1s;
+    }
+
+    .visible .sound-notice {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(255, 105, 180, 0.5);
+      }
+      70% {
+        box-shadow: 0 0 0 10px rgba(255, 105, 180, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(255, 105, 180, 0);
+      }
+    }
+
+    /* สไตล์สำหรับหน้าคำถาม */
+    .question-image {
+      max-width: 280px;
+      max-height: 180px;
+      margin: 0 auto 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .answer-input {
+      width: 85%;
+      max-width: 280px;
+      padding: 12px;
+      border: 2px solid #ffbcdd;
+      border-radius: 10px;
+      font-family: 'Athiti', sans-serif;
+      font-size: 1.1rem;
+      margin: 15px 0;
+    }
+
+    .submit-btn {
+      background: #ff5e78;
+      color: white;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-family: 'Maledpan', sans-serif;
+      font-size: 1.1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(255, 105, 180, 0.25);
+      transition: all 0.3s;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease 0.6s;
+    }
+
+    .visible .submit-btn {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(255, 105, 180, 0.4);
+    }
+
+    .feedback {
+      margin-top: 15px;
+      color: #ff5e78;
+      font-size: 1.1rem;
+      height: 30px;
+      font-family: 'Athiti', sans-serif;
+    }
+
+    /* สไตล์สำหรับวิดีโอและของขวัญ */
+    .video-container {
+      width: 90%;
+      max-width: 350px;
+      margin: 20px auto;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(255, 105, 180, 0.25);
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all 1s ease 0.6s;
+    }
+
+    .visible .video-container {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .gift-container {
+      text-align: center;
+      margin-top: 25px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease 0.9s;
+    }
+
+    .visible .gift-container {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .gift-emoji {
+      font-size: 5rem;
+      margin: 0 auto;
+      cursor: pointer;
+      transition: all 0.3s;
+      animation: pulse-gift 2s infinite;
+    }
+
+    @keyframes pulse-gift {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .gift-emoji:hover {
+      transform: scale(1.2);
+    }
+
+    .clue-text {
+      font-family: 'Athiti', sans-serif;
+      font-size: 1.1rem;
+      color: #ff5e78;
+      margin-top: 20px;
+      padding: 15px;
+      background: rgba(255, 236, 246, 0.8);
+      border-radius: 10px;
+      display: none;
+    }
+
+    /* สไตล์สำหรับหน้าสุดท้าย */
+    .couple-photo {
+      width: 280px;
+      height: 280px;
+      border-radius: 10px;
+      margin-top: 20px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all 1s ease 0.9s;
+    }
+
+    .visible .couple-photo {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .navigation {
+      position: fixed;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 5px 10px;
+      border-radius: 30px;
+    }
+
+    .nav-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 187, 215, 0.5);
+      margin: 0 5px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .nav-dot.active {
+      background: #ff5e78;
+      transform: scale(1.3);
+    }
+
+    /* อนิเมชันอิโมจิเมื่อคลิก */
+    .emoji-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 101;
+    }
+
+    .flying-emoji {
+      position: absolute;
+      font-size: 1.5rem;
+      opacity: 0;
+      animation: fly-emoji 2s forwards;
+    }
+
+    @keyframes fly-emoji {
+      0% {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translate(
+          calc(-50% + (100vw - 50px) * var(--x)),
+          calc(-50% + (100vh - 50px) * var(--y))
+        ) scale(1);
+        opacity: 0;
+      }
+    }
+
+    /* สไตล์สำหรับซองจดหมาย (ออกแบบใหม่ ง่ายขึ้น) */
+    .envelope-container {
+      width: 320px;
+      height: 220px;
+      margin: 50px auto;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .envelope {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transition: all 0.5s ease;
+      transform-style: flat;
+    }
+
+    .envelope-front {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #ff94c9, #ff5e78);
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      z-index: 3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      transition: transform 0.6s ease;
+    }
+
+    .envelope.open .envelope-front {
+      transform: translateY(-100%);
+    }
+
+    .envelope-letter {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      border-radius: 10px;
+      z-index: 2;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .envelope-pattern {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0.2;
+      background-image: repeating-linear-gradient(
+        45deg,
+        #ffffff,
+        #ffffff 10px,
+        transparent 10px,
+        transparent 20px
+      );
+    }
+
+    .stamp {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 50px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      transform: rotate(5deg);
+    }
+
+    .stamp-design {
+      font-size: 30px;
+      color: #ff5e78;
+    }
+
+    .to-text {
+      position: absolute;
+      bottom: 30px;
+      width: 100%;
+      text-align: center;
+      color: white;
+      font-family: 'Maledpan', sans-serif;
+      font-size: 1.5rem;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .envelope-letter h2 {
+      font-family: 'Kodchasan', cursive;
+      color: #ff5e78;
+      margin-bottom: 15px;
+      font-size: 1.6rem;
+    }
+
+    .envelope-letter p {
+      font-family: 'Athiti', sans-serif;
+      color: #333;
+      font-size: 1rem;
+      margin-bottom: 15px;
+      opacity: 1;
+      transform: none;
+    }
+
+    .click-hint {
+      position: absolute;
+      bottom: -40px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      color: #ff5e78;
+      font-family: 'Athiti', sans-serif;
+      font-size: 1rem;
+      opacity: 0.8;
+      animation: pulse 1.5s infinite;
+    }
+
+    .hidden-content {
+      display: none;
+      position: relative;
+      z-index: 1;
+    }
+
+    .show-content {
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+
+    .birthday-btn {
+      background: #ff5e78;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 50px;
+      font-family: 'Maledpan', sans-serif;
+      font-size: 1rem;
+      margin-top: 15px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(255, 105, 180, 0.25);
+      transition: all 0.3s;
+    }
+
+    .birthday-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(255, 105, 180, 0.4);
+    }
+
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #fff6f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000; /* เพิ่ม z-index ให้สูงที่สุด */
+      flex-direction: column;
+    }
+
+    .loading-animation {
+      width: 100px;
+      height: 100px;
+      position: relative;
+    }
+
+    .loading-circle {
+      width: 100%;
+      height: 100%;
+      border: 5px solid transparent;
+      border-top-color: #ff5e78;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    .loading-heart {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2rem;
+      animation: pulse 1.5s infinite;
+    }
+
+    .loading-text {
+      margin-top: 20px;
+      font-family: 'Maledpan', sans-serif;
+      color: #ff5e78;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+<!-- หน้าโหลด -->
+<div class="loading-screen" id="loading-screen">
+  <div class="loading-animation">
+    <div class="loading-circle"></div>
+    <div class="loading-heart">💌</div>
+  </div>
+  <div class="loading-text">กำลังโหลด...</div>
+</div>
+
+<div class="music-control" onclick="toggleMusic()">
+  <div class="music-icon">▶️</div>
+</div>
+
+<div class="navigation" id="navigation">
+  <!-- Nav dots will be added here -->
+</div>
+
+<!-- เพลงเดียวสำหรับทั้งเว็บ -->
+<audio id="background-music" loop preload="auto">
+  <source src="img/bg-song.mp3" type="audio/mpeg">
+</audio>
+
+<!-- หน้าซองจดหมาย -->
+<section class="bg-1" id="envelope-section" data-index="0">
+  <div class="envelope-container" id="envelope-container">
+    <div class="envelope" id="envelope">
+      <div class="envelope-front">
+        <div class="envelope-pattern"></div>
+        <div class="stamp">
+          <div class="stamp-design">🎂</div>
+        </div>
+        <div class="to-text">ถึง ดื้อ</div>
+      </div>
+      <div class="envelope-letter">
+        <h2>แฮปปี้เบิดเดย์ครับบบบ !</h2>
+        <p>นั่งคิดอยู่ว่าจะเซอร์ไพรส์ดื้อยังไงดี... เลยทำเว็บนี้มาให้ 😊</p>
+        <button class="birthday-btn" id="start-journey">มีอะไรอยู่ข้างในนี้กันนะ 👀</button>
+      </div>
+    </div>
+    <div class="click-hint">แตะเพื่อเปิดซอง</div>
+  </div>
+</section>
+
+<!-- เพิ่ม clearfix เพื่อล้างการลอยตัว -->
+<div style="clear: both; height: 0; width: 100%;"></div>
+
+<!-- เนื้อหาหลัก (ซ่อนไว้ก่อน) -->
+<div class="hidden-content" id="main-content">
+  <section class="bg-2" id="memory-intro" data-index="1">
+    <h1>มาดูกันดีกว่าปีที่แล้วเราผ่านอะไรกันมาบ้างงง</h1>
+
+    <div class="photo-frame">
+      <div class="photo-placeholder">
+        <img src="img/memories-collage.jpg" alt="ภาพรวมความทรงจำ" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+    </div>
+
+    <p>ปีที่ผ่านมาเรามีความทรงจำดีๆ ด้วยกันเยอะมากเลยนะ</p>
+    <p>มาดูกันว่าเราผ่านอะไรมาบ้าง ทั้งสนุก ทั้งเหนื่อย แต่เราก็ผ่านมันมาด้วยกันจนถึงวันนี้</p>
+
+    <div class="sticker" style="bottom: 15%; left: 15%;">🎞️</div>
+    <div class="sticker" style="top: 20%; right: 10%;">📆</div>
+    <div class="sticker" style="top: 40%; left: 20%;">💫</div>
+    <div class="sticker" style="bottom: 30%; right: 25%;">💝</div>
+  </section>
+  <!-- หน้าความทรงจำ 1: คอนเสิร์ต -->
+  <section class="bg-3" id="memory-concert" data-index="2">
+    <h1>คอนเสิร์ตริมหาดดด 🌊🎸</h1>
+    <div class="photo-frame">
+      <div class="photo-placeholder">
+        <img src="img/concert.jpg" alt="คอนเสิร์ตริมหาด" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+    </div>
+    <p>ไปดูคอนเสิร์ตริมหาดด้วยกันครั้งแรก</p>
+    <p>วันนั้นเราขับรถตากฝน เป็นคอนแรกที่เราไปดูด้วยกัน อ้วนมีความสุขมากๆ ครับ ขอบคุณนะ (จุ้งอร่อยมาก)</p>
+
+    <div class="sticker" style="bottom: 15%; left: 15%;">🎸</div>
+    <div class="sticker" style="top: 20%; right: 10%;">🎵</div>
+    <div class="sticker" style="top: 40%; left: 20%;">🎧</div>
+    <div class="sticker" style="bottom: 30%; right: 25%;">🌊</div>
+  </section>
+
+  <!-- หน้าความทรงจำ 2: เที่ยวต่างประเทศ -->
+  <section class="bg-4" id="memory-china" data-index="3">
+    <h1>เที่ยวต่างประเทศครั้งแรก ✈️</h1>
+
+    <div class="photo-frame">
+      <div class="photo-placeholder">
+        <img src="img/chengdu.jpg" alt="เที่ยวเฉิงตู" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+    </div>
+    <p>เป็นทริปที่กระทันหัน แต่ก็ทำออกมาได้ดี เป็นทริปต่างประเทศครั้งแรกของทั้งสองคนที่หนาวเกือบตาย อ้วนแฮปปีมากๆ ที่ได้ไปเที่ยวกะดื้อ ไว้เก็บตังค์ไปเที่ยวกันบ่อยๆ นะ</p>
+
+    <div class="sticker" style="bottom: 15%; left: 15%;">✈️</div>
+    <div class="sticker" style="top: 20%; right: 10%;">🧸</div>
+    <div class="sticker" style="top: 40%; left: 20%;">🏯</div>
+    <div class="sticker" style="bottom: 30%; right: 25%;">🌏</div>
+  </section>
+
+  <!-- หน้าความทรงจำ 3: รถยนต์ -->
+  <section class="bg-5" id="memory-car" data-index="4">
+    <h1>ไมก้าบิ๊กบอยยยยย 🚙</h1>
+
+    <div class="photo-frame">
+      <div class="photo-placeholder">
+        <img src="img/micra.jpg" alt="รถไมก้า" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+    </div>
+    <p>ดีใจกะดื้อมากๆ นะครับ ขอให้ขับขี่ปลอดภัยและขอให้บักไมก้าไม่ดื้อ ขับง่ายๆ พาเราไปทุกที่อย่างปลอดภัย</p>
+
+    <div class="sticker" style="bottom: 15%; left: 15%;">🚗</div>
+    <div class="sticker" style="top: 20%; right: 10%;">🛣️</div>
+    <div class="sticker" style="top: 40%; left: 20%;">🔑</div>
+    <div class="sticker" style="bottom: 30%; right: 25%;">🌈</div>
+  </section>
+  <section class="bg-2" id="section2" data-index="1">
+    <h1>ขอบคุณที่อยู่ข้างกัน</h1>
+    <div class="photo-frame">
+      <div class="photo-placeholder">
+        <img src="img/01.jpg" alt="รูปคู่ของเรา" class="couple-photo">
+      </div>
+    </div>
+    <p>ขอบคุณที่อยู่ข้างๆ ตอนอ้วนเศร้า ร้องไห้ หรือเครียด ตอนชีวิตลำบากที่สุด ดื้อไม่เคยทิ้งอ้วนไปไหนเลย</p>
+    <div class="sticker" style="bottom: 15%; left: 15%;">🎀</div>
+    <div class="sticker" style="top: 25%; right: 10%;">💖</div>
+    <div class="sticker" style="top: 10%; left: 25%;">🌟</div>
+    <div class="sticker" style="bottom: 30%; right: 25%;">💕</div>
+  </section>
+
+  <section class="bg-3" id="section3" data-index="5">
+    <h1>ขอบคุณเรื่องเล็กๆ ที่ใส่ใจอ้วนมาตลอด</h1>
+    <div class="photo-frame">
+      <div class="photo-placeholder">
+        รูปที่มีความหมาย<br>
+        (ใส่รูปที่นี่)
+      </div>
+    </div>
+    <p>ทุกครั้งที่ดื้อรีดผ้าให้ ซื้อขนมมาฝาก หรือเก็บโต๊ะคอมให้... เรื่องเล็กๆ พวกนี้ทำให้อ้วนรู้ว่าดื้อรักและใส่ใจอ้วนมากๆ ขอบคุณนะครับ</p>
+    <div class="sticker" style="bottom: 20%; right: 20%;">🌟</div>
+    <div class="sticker" style="top: 15%; left: 20%;">🎵</div>
+    <div class="sticker" style="bottom: 35%; left: 10%;">✨</div>
+    <div class="sticker" style="top: 35%; right: 15%;">💫</div>
+  </section>
+
+  <section class="bg-6 final-section" id="section4" data-index="6">
+    <h1 class="final-title">แฮปปี้เบิร์ธเดย์!</h1>
+    <div class="cake">🎂</div>
+    <p>ขอให้ดื้อมีความสุขมากๆ หน้าที่การงานก้าวหน้า ขอบคุณที่เติบโตมาอย่างดี เติบโตไปด้วยกันนะครับคนเก่งของเค้า</p>
+    <p>รักดื้อนะ ❤️</p>
+    <img src="img/01.jpg" alt="รูปคู่ของเรา" class="couple-photo">
+    <div class="sticker" style="bottom: 20%; left: 20%;">🎁</div>
+    <div class="sticker" style="top: 15%; right: 25%;">🎊</div>
+    <div class="sticker" style="bottom: 40%; right: 10%;">🎈</div>
+    <div class="sticker" style="top: 40%; left: 15%;">🌸</div>
+  </section>
+
+  <!-- หน้าคำถาม -->
+  <section class="bg-4" id="section5" data-index="7">
+    <h1>คำถามพิเศษ!</h1>
+    <img src="img/rick.jpg" alt="Rick and Morty" class="question-image" id="question-image">
+    <p>ตัวละครในรูปนี้พูดว่าอะไร?</p>
+    <input type="text" class="answer-input" id="answer-input" placeholder="พิมพ์คำตอบ...">
+    <p class="feedback" id="feedback"></p>
+    <button class="submit-btn" id="submit-btn">ตอบ</button>
+    <div class="sticker" style="bottom: 15%; right: 15%;">🌟</div>
+    <div class="sticker" style="top: 15%; left: 15%;">✨</div>
+    <div class="sticker" style="top: 35%; right: 30%;">💖</div>
+    <div class="sticker" style="bottom: 30%; left: 25%;">🎀</div>
+  </section>
+
+  <!-- หน้าวิดีโอและของขวัญ -->
+  <section class="bg-5" id="section6" data-index="8">
+    <h1>อะแฮ่มๆ โหลๆ!</h1>
+
+    <div class="video-container">
+      <!-- ใส่วิดีโอที่นี่ -->
+      <video width="100%" controls id="birthday-video">
+        <source src="https://example.com/birthday-video.mp4" type="video/mp4">
+        ไม่สามารถแสดงวิดีโอได้
+      </video>
+    </div>
+
+    <div class="gift-container">
+      <h2>แตะที่ของขวัญเพื่อดูคำใบ้</h2>
+      <div class="gift-emoji" id="gift-emoji">🎁</div>
+      <p class="clue-text" id="clue-text">
+        สวยงามบินสูงเหมือนนางในนิทาน<br>
+        ประกายแวววาวเปล่งรัศมีดั่งดวงดาว<br>
+        อ้วนเก็บมันไว้ที่คอนโด<br>
+        รอดื้อมาค้นหา
+      </p>
+    </div>
+
+    <div class="sticker" style="bottom: 10%; right: 20%;">🎁</div>
+    <div class="sticker" style="top: 10%; left: 20%;">🎊</div>
+    <div class="sticker" style="top: 25%; right: 10%;">💝</div>
+    <div class="sticker" style="bottom: 25%; left: 10%;">🌟</div>
+  </section>
+</div>
+
+<div class="emoji-animation" id="emoji-animation"></div>
+
+<script>
+  let isMuted = true;
+  let currentSection = 0;
+  // ตัวแปรควบคุม
+  let envelopeOpened = false;
+  let totalSections = 10; // เพิ่มเป็น 10 (เพิ่มอีก 1 หน้า intro)
+
+  // เริ่มต้นเมื่อโหลดหน้า
+  window.addEventListener('load', () => {
+    // ซ่อนหน้าโหลด
+    setTimeout(() => {
+      document.getElementById('loading-screen').style.opacity = '0';
+      setTimeout(() => {
+        document.getElementById('loading-screen').style.display = 'none';
+      }, 500);
+    }, 1500);
+
+    // เริ่มต้นอื่นๆ
+    hideInitialSections();
+    createNavDots();
+
+    // เตรียมเสียงให้พร้อมเล่น (แต่ยังไม่เล่น)
+    document.getElementById('background-music').load();
+
+    // ซ่อนข้อความแนะนำเฉพาะครั้งแรก
+    setTimeout(() => {
+      if (document.querySelector('.instructions')) {
+        document.querySelector('.instructions').style.opacity = '0';
+        setTimeout(() => {
+          if (document.querySelector('.instructions')) {
+            document.querySelector('.instructions').style.display = 'none';
+          }
+        }, 1000);
+      }
+    }, 5000);
+
+    // สร้างหัวใจลอยในหน้าสุดท้าย
+    createHearts();
+
+    // เพิ่มการตรวจสอบเมื่อเลื่อนหน้า
+    window.addEventListener('scroll', checkSections);
+  });
+
+  // จัดการการเปิดซอง
+  document.getElementById('envelope-container').addEventListener('click', function() {
+    if (!envelopeOpened) {
+      // ทำให้ซองเปิด
+      document.getElementById('envelope').classList.add('open');
+      envelopeOpened = true;
+
+      // เปิดเพลง - ใช้ try-catch เพื่อจัดการกรณีที่เบราว์เซอร์ไม่อนุญาตให้เล่นเสียง
+      setTimeout(() => {
+        try {
+          const music = document.getElementById('background-music');
+          const playPromise = music.play();
+
+          if (playPromise !== undefined) {
+            playPromise.then(_ => {
+              // เล่นเพลงสำเร็จ
+              document.querySelector('.music-icon').innerHTML = '🔊';
+              isMuted = false;
+            })
+              .catch(error => {
+                // ไม่สามารถเล่นเพลงได้ - อาจเกิดจากนโยบายของเบราว์เซอร์
+                console.log("Cannot autoplay music, user will need to press play button");
+                document.querySelector('.music-icon').innerHTML = '▶️';
+                isMuted = true;
+              });
+          }
+        } catch (e) {
+          // เกิดข้อผิดพลาดในการเล่นเพลง
+          console.log("Error playing audio:", e);
+        }
+      }, 500);
+
+      // ซ่อนคำใบ้
+      if (document.querySelector('.click-hint')) {
+        document.querySelector('.click-hint').style.display = 'none';
+      }
+    }
+  });
+
+  // จัดการการเริ่มเนื้อหาหลัก
+  document.getElementById('start-journey').addEventListener('click', function() {
+    // ล้าง envelope section ก่อนเพื่อป้องกันการซ้อนทับ
+    document.getElementById('envelope-container').style.display = 'none';
+
+    // แสดงเนื้อหาหลัก
+    document.getElementById('main-content').classList.add('show-content');
+    document.getElementById('envelope-section').style.display = 'none';
+    document.getElementById('section2').style.display = 'flex';
+
+    // เพิ่มคลาส visible ให้กับหน้าแรก
+    setTimeout(() => {
+      document.getElementById('section2').classList.add('visible');
+      currentSection = 1;
+      updateNavDots();
+      // เรียกฟังก์ชัน checkSections เพื่อตรวจสอบการแสดงผล
+      checkSections();
+
+      // รีเซ็ตตำแหน่งการเลื่อน
+      window.scrollTo(0, 0);
+    }, 100);
+  });
+
+  // สร้างหัวใจลอยในหน้าสุดท้าย
+  function createHearts() {
+    const finalSection = document.getElementById('section4');
+    for (let i = 0; i < 20; i++) {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerHTML = ['❤️', '💖', '💕', '💓', '💗'][Math.floor(Math.random() * 5)];
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 10 + 5) + 's';
+      heart.style.animationDelay = Math.random() * 5 + 's';
+      finalSection.appendChild(heart);
+    }
+  }
+
+  // สร้างจุดเลื่อนหน้า
+  function createNavDots() {
+    const nav = document.getElementById('navigation');
+    nav.innerHTML = ''; // ล้างข้อมูลเดิม
+
+    for (let i = 0; i < totalSections; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'nav-dot';
+      if (i === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => scrollToSection(i));
+      nav.appendChild(dot);
+    }
+  }
+
+  // อัปเดตจุดเลื่อนหน้า
+  function updateNavDots() {
+    const navDots = document.querySelectorAll('.nav-dot');
+    navDots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentSection);
+    });
+  }
+
+  // ซ่อนหน้าที่ไม่ควรแสดงตอนเริ่มต้น
+  function hideInitialSections() {
+    document.getElementById('main-content').classList.remove('show-content');
+    document.getElementById('section5').style.display = 'none';
+    document.getElementById('section6').style.display = 'none';
+  }
+
+  // เลื่อนไปยังหน้าที่ต้องการ
+  function scrollToSection(index) {
+    // หลังจากซองถูกเปิดแล้ว
+    if (!envelopeOpened && index > 0) return;
+
+    // ตรวจสอบว่ายังอยู่ที่หน้าซองหรือเริ่มเนื้อหาหลักแล้ว
+    const mainContentVisible = document.getElementById('main-content').classList.contains('show-content');
+
+    // ถ้าเป็นหน้าซองและยังไม่ได้เริ่มเนื้อหาหลัก
+    if (index === 0 && !mainContentVisible) {
+      return; // ไม่ต้องทำอะไร เพราะกำลังอยู่ที่หน้าซองอยู่แล้ว
+    }
+
+    // ถ้าเป็นหน้าซองและเริ่มเนื้อหาหลักแล้ว
+    if (index === 0 && mainContentVisible) {
+      // ไม่สามารถกลับไปที่หน้าซองได้หลังจากเริ่มเนื้อหาหลักแล้ว
+      index = 1; // ให้ไปหน้าแรกของเนื้อหาหลักแทน
+    }
+
+    // หลังจากเริ่มเนื้อหาหลักแล้ว
+    if (mainContentVisible) {
+      // ซ่อนคำถามและของขวัญถ้ายังไม่ถึงขั้นตอนนั้น
+      if (index === 5 && !document.getElementById('section6').classList.contains('visible')) {
+        index = 4;
+      }
+
+      if (index === 4 && document.getElementById('section5').style.display === 'none') {
+        index = 3;
+      }
+
+      const sectionId = index === 0 ? 'envelope-section' : `section${index + 1}`;
+      const section = document.getElementById(sectionId);
+
+      if (section) {
+        window.scrollTo({
+          top: section.offsetTop,
+          behavior: 'smooth'
+        });
+      }
+    }
+  }
+
+  // ตรวจสอบว่าส่วนไหนอยู่ในมุมมอง
+  function checkSections() {
+    // ถ้ายังไม่แสดงเนื้อหาหลัก ให้ข้ามไป
+    if (!document.getElementById('main-content').classList.contains('show-content')) return;
+
+    // ตรวจสอบและล้าง z-index ที่อาจค้างอยู่
+    document.getElementById('envelope-section').style.zIndex = '-1';
+    document.getElementById('main-content').style.zIndex = '2';
+
+    const sections = document.querySelectorAll('#main-content section');
+    let visibleFound = false;
+
+    sections.forEach(section => {
+      // ข้ามส่วนที่ถูกซ่อน
+      if (section.style.display === 'none') return;
+
+      const sectionTop = section.getBoundingClientRect().top;
+      const sectionBottom = section.getBoundingClientRect().bottom;
+      const isVisible = sectionTop < window.innerHeight * 0.5 && sectionBottom > window.innerHeight * 0.5;
+
+      if (isVisible) {
+        section.classList.add('visible');
+        visibleFound = true;
+
+        const sectionIndex = parseInt(section.dataset.index);
+        currentSection = sectionIndex;
+        updateNavDots();
+
+        // แสดงหน้าคำถามเมื่อถึงหน้าสุดท้าย
+        if (sectionIndex === 3 && section.classList.contains('visible')) {
+          document.getElementById('section5').style.display = 'flex';
+          // เพิ่มคลาส visible ให้หน้าคำถามเมื่อแสดงผล
+          setTimeout(() => {
+            if (document.getElementById('section5') &&
+              document.getElementById('section5').style.display === 'flex') {
+              document.getElementById('section5').classList.add('visible');
+            }
+          }, 200);
+        }
+      } else if (!visibleFound) {
+        // เมื่อเลื่อนผ่านเร็วๆ ไม่ควรลบคลาส visible จากทุกส่วน
+        // จึงเพิ่มเงื่อนไขตรวจสอบว่ายังไม่พบส่วนที่มองเห็นได้
+        section.classList.remove('visible');
+      }
+    });
+  }
+
+  // เปิด/ปิดเพลง
+  function toggleMusic() {
+    const music = document.getElementById('background-music');
+    const musicIcon = document.querySelector('.music-icon');
+
+    if (isMuted) {
+      music.play();
+      musicIcon.innerHTML = '🔊';
+    } else {
+      music.pause();
+      musicIcon.innerHTML = '▶️';
+    }
+
+    isMuted = !isMuted;
+  }
+
+  // สร้างอนิเมชันอิโมจิ
+  function createEmojiAnimation() {
+    const container = document.getElementById('emoji-animation');
+    const emojis = ['✨', '💖', '🎀', '🦢', '💎', '🌟', '✨', '🎉', '🎊', '💫'];
+
+    // ล้างอิโมจิเก่า
+    container.innerHTML = '';
+
+    // สร้างอิโมจิใหม่
+    for (let i = 0; i < 20; i++) {
+      const emoji = document.createElement('div');
+      emoji.className = 'flying-emoji';
+      emoji.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+      emoji.style.setProperty('--x', Math.random());
+      emoji.style.setProperty('--y', Math.random());
+      emoji.style.left = '50%';
+      emoji.style.top = '50%';
+      emoji.style.animationDelay = (Math.random() * 1) + 's';
+
+      container.appendChild(emoji);
+    }
+  }
+
+  // ตรวจสอบคำตอบ
+  document.getElementById('submit-btn').addEventListener('click', function() {
+    const answer = document.getElementById('answer-input').value.trim();
+    const feedback = document.getElementById('feedback');
+
+    if (answer === "เงิบเลยดิค้าบ") {
+      feedback.textContent = "ถูกต้อง! 🎉 มีซอฟไพรส์พิเศษรออยู่ที่หน้าถัดไป";
+      feedback.style.color = "green";
+
+      // แสดงหน้าของขวัญและวิดีโอ
+      document.getElementById('section6').style.display = 'flex';
+
+      // เลื่อนไปยังหน้าต่อไปหลังจาก 1.5 วินาที
+      setTimeout(() => {
+        scrollToSection(5);
+        document.getElementById('birthday-video').play();
+      }, 2000);
+    } else {
+      feedback.textContent = "ลองอีกครั้งนะ";
+      feedback.style.color = "#ff5e78";
+    }
+  });
+
+  // เปิดคำใบ้ของขวัญ
+  document.getElementById('gift-emoji').addEventListener('click', function() {
+    document.getElementById('clue-text').style.display = 'block';
+    createEmojiAnimation();
+  });
+
+  // ตรวจสอบเมื่อเลื่อนหน้า
+  window.addEventListener('scroll', checkSections);
+</script>
+</body>
+</html>
